@@ -30,6 +30,7 @@
 
 #import "DHcell.h"
 
+/*
 @interface DHcell ()
 @property (nonatomic, assign, readwrite) contentsType type;
 @property (nonatomic, assign, readwrite) uint16_t row;
@@ -40,3 +41,4 @@
 
 
 @end
+*/

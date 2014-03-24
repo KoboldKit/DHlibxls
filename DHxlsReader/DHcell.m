@@ -28,7 +28,7 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "DHcell-Private.h"
+#import "DHcell.h"
 
 #if ! __has_feature(objc_arc)
 #error THIS CODE MUST BE COMPILED WITH ARC ENABLED!
@@ -65,6 +65,25 @@
 - (void)show
 {
 	NSLog(@"%@", [self dump]);
+}
+
+-(NSString*) description
+{
+	NSMutableString *s = [NSMutableString stringWithCapacity:128];
+	
+	const char *name;
+	switch(type) {
+		case cellBlank:		name = "Blank";		break;
+		case cellString:	name = "String";	break;
+		case cellInteger:	name = "Integer";	break;
+		case cellFloat:		name = "Float";		break;
+		case cellBool:		name = "Bool";		break;
+		case cellError:		name = "Error";		break;
+		default:			name = "Unknown";	break;
+	}
+	
+	[s appendFormat:@"[%s:%u] '%@' (%s)", colString, row, str, name];
+	return s;
 }
 
 - (NSString *)dump
